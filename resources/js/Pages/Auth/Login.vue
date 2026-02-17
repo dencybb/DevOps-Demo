@@ -1,53 +1,92 @@
+<script setup>
+import { Head, Link, useForm } from '@inertiajs/vue3'
+import TextInput from '@/Shared/TextInput.vue'
+import LoadingButton from '@/Shared/LoadingButton.vue'
+import Logo from '@/Shared/Logo.vue'
+
+defineProps({
+  errors: Object,
+})
+
+const form = useForm({
+  email: 'johndoe@example.com',
+  password: 'secret',
+  remember: false,
+})
+
+const submit = () => {
+  form
+    .transform(data => ({
+      ...data,
+      remember: form.remember ? 'on' : '',
+    }))
+    .post('/login')
+}
+</script>
+
 <template>
-  <Head title="Login" />
-  <div class="flex items-center justify-center p-6 min-h-screen bg-indigo-800">
+  <div class="flex min-h-screen items-center justify-center bg-gray-50 p-6">
     <div class="w-full max-w-md">
-      <logo class="block mx-auto w-full max-w-xs fill-white" height="50" />
-      <form class="mt-8 bg-white rounded-lg shadow-xl overflow-hidden" @submit.prevent="login">
-        <div class="px-10 py-12">
-          <h1 class="text-center text-3xl font-bold">Welcome Back!</h1>
-          <div class="mt-6 mx-auto w-24 border-b-2" />
-          <text-input v-model="form.email" :error="form.errors.email" class="mt-10" label="Email" type="email" autofocus autocapitalize="off" />
-          <text-input v-model="form.password" :error="form.errors.password" class="mt-6" label="Password" type="password" />
-          <label class="flex items-center mt-6 select-none" for="remember">
-            <input id="remember" v-model="form.remember" class="mr-1" type="checkbox" />
-            <span class="text-sm">Remember Me</span>
-          </label>
+      <Head title="Login" />
+      
+      <Logo class="mx-auto mb-8 block h-16 w-16 fill-indigo-600" />
+
+      <!-- INFO BANNER -->
+      <div class="mb-6 rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4 shadow-sm">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-semibold text-blue-800">
+              🚀 DevOps Demo Project
+            </p>
+            <p class="mt-1 text-xs text-blue-700">
+              Production-ready Laravel CRM with Docker, CI/CD & AWS deployment.
+            </p>
+            <p class="mt-2 text-xs text-blue-600">
+              Built by <strong>Denis Basic</strong> as a DevOps portfolio demonstration.
+              <a 
+                href="https://github.com/dencybb/DevOps-Demo" 
+                target="_blank"
+                class="ml-1 font-medium underline hover:text-blue-800"
+              >
+                View on GitHub →
+              </a>
+            </p>
+          </div>
         </div>
-        <div class="flex px-10 py-4 bg-gray-100 border-t border-gray-100">
-          <loading-button :loading="form.processing" class="btn-indigo ml-auto" type="submit">Login</loading-button>
-        </div>
-      </form>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div class="overflow-hidden rounded-lg bg-white shadow">
+        <form @submit.prevent="submit">
+          <div class="px-8 py-6">
+            <h1 class="text-center text-3xl font-bold">Welcome Back!</h1>
+            <div class="mt-6">
+              <TextInput v-model="form.email" :error="errors.email" class="mt-6" label="Email" type="email" autofocus autocapitalize="off" />
+              <TextInput v-model="form.password" :error="errors.password" class="mt-6" label="Password" type="password" />
+              <label class="mt-6 flex select-none items-center" for="remember">
+                <input id="remember" v-model="form.remember" class="mr-1" type="checkbox" />
+                <span class="text-sm">Remember Me</span>
+              </label>
+            </div>
+          </div>
+          <div class="flex items-center justify-between border-t border-gray-100 bg-gray-50 px-8 py-4">
+            <Link class="hover:underline" href="/password/reset">Forget your password?</Link>
+            <LoadingButton :loading="form.processing" class="btn-indigo ml-auto" type="submit">Login</LoadingButton>
+          </div>
+        </form>
+      </div>
+
+      <!-- DEMO CREDENTIALS -->
+      <div class="mt-4 text-center text-sm text-gray-600">
+        <p class="font-medium">Demo Credentials:</p>
+        <p class="mt-1">Email: <code class="rounded bg-gray-100 px-2 py-1 text-xs">johndoe@example.com</code></p>
+        <p>Password: <code class="rounded bg-gray-100 px-2 py-1 text-xs">secret</code></p>
+      </div>
     </div>
   </div>
 </template>
-
-<script>
-import { Head } from '@inertiajs/vue3'
-import Logo from '@/Shared/Logo.vue'
-import TextInput from '@/Shared/TextInput.vue'
-import LoadingButton from '@/Shared/LoadingButton.vue'
-
-export default {
-  components: {
-    Head,
-    LoadingButton,
-    Logo,
-    TextInput,
-  },
-  data() {
-    return {
-      form: this.$inertia.form({
-        email: 'johndoe@example.com',
-        password: 'secret',
-        remember: false,
-      }),
-    }
-  },
-  methods: {
-    login() {
-      this.form.post('/login')
-    },
-  },
-}
-</script>
