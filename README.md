@@ -13,6 +13,11 @@ Production-ready Laravel CRM demonstrating multi-container Docker orchestration,
 
 ![](https://raw.githubusercontent.com/inertiajs/pingcrm/master/screenshot.png)
 
+
+> **Note:** Application code based on [Ping CRM](https://github.com/inertiajs/pingcrm) 
+> by the Inertia.js team. This project focuses on the DevOps infrastructure: 
+> Docker, CI/CD pipeline, and AWS deployment.
+
 ---
 
 ## 🛠️ Tech Stack
