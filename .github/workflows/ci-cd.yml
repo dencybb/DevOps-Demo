@@ -52,8 +52,8 @@ jobs:
           script: |
             cd ~/DevOps-Demo
             git pull origin main
-            npm ci
-            npm run build
+            docker compose exec -T frontend npm ci
+            docker compose exec -T frontend npm run build
             docker compose exec -T app php artisan config:clear
             docker compose exec -T app php artisan config:cache
             docker compose exec -T app php artisan view:clear
