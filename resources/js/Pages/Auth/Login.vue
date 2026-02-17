@@ -86,8 +86,8 @@ const submit = () => {
 
       <!-- DEMO CREDENTIALS -->
       <div class="mt-6 text-center text-sm text-gray-300">
-        <p class="font-medium text-white">🔑Demo Credentials🔑</p>
-        <p class="mt-2">E-mail: <code class="rounded bg-indigo-800 px-2 py-1 text-xs text-blue-200">johndoe@example.com</code></p>
+        <p class="font-medium text-white">🔑Demo Credentials: </p>
+        <p class="mt-2">E-Mail: <code class="rounded bg-indigo-800 px-2 py-1 text-xs text-blue-200">johndoe@example.com</code></p>
         <p class="mt-1">Password: <code class="rounded bg-indigo-800 px-2 py-1 text-xs text-blue-200">secret</code></p>
       </div>
     </div>
