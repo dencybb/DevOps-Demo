@@ -61,3 +61,4 @@ jobs:
             docker compose exec -T app php artisan view:cache
             docker compose restart nginx
             echo "Deployed successfully!"
+            curl --fail https://denisbasic.me/api/health || echo "Health check failed!"
