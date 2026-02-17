@@ -14,6 +14,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
+          extensions: pdo_sqlite, sqlite3
 
       - name: Install Composer Dependencies
         run: composer install --no-interaction --prefer-dist
@@ -35,7 +36,19 @@ jobs:
       - name: Generate Key
         run: php artisan key:generate
 
+      - name: Create SQLite database
+        run: touch database/database.sqlite
+
+      - name: Run Migrations
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: php artisan migrate --force
+
       - name: Run Tests
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
         run: php artisan test
 
   deploy:
@@ -51,8 +64,7 @@ jobs:
           script: |
             cd ~/DevOps-Demo
             git pull origin main
-            docker compose stop frontend
-            docker compose run --rm frontend npm run build
+            npm run build
             docker compose exec -T app rm -f /var/www/public/hot
             docker compose exec -T app php artisan config:clear
             docker compose exec -T app php artisan view:clear
