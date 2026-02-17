@@ -29,10 +29,10 @@ const submit = () => {
     <div class="w-full max-w-md">
       <Head title="Login" />
       
-      <Logo class="mx-auto mb-8 block h-24 w-24 fill-white" />
+      <Logo class="mx-auto mb-12 block h-20 w-20 fill-white" />
 
       <!-- INFO BANNER -->
-      <div class="mb-6 rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4 shadow-sm">
+      <div class="mt-4 mb-8 rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4 shadow-sm">
         <div class="flex">
           <div class="flex-shrink-0">
             <svg class="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
