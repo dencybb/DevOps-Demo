@@ -25,11 +25,11 @@ const submit = () => {
 </script>
 
 <template>
-  <div class="flex min-h-screen items-center justify-center bg-gray-50 p-6">
+  <div class="flex min-h-screen items-center justify-center bg-indigo-900 p-6">
     <div class="w-full max-w-md">
       <Head title="Login" />
       
-      <Logo class="mx-auto mb-8 block h-16 w-16 fill-indigo-600" />
+      <Logo class="mx-auto mb-8 block h-16 w-16 fill-white" />
 
       <!-- INFO BANNER -->
       <div class="mb-6 rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4 shadow-sm">
@@ -60,7 +60,7 @@ const submit = () => {
         </div>
       </div>
 
-      <!-- LOGIN FORM -->
+      <!-- LOGIN FORMA -->
       <div class="overflow-hidden rounded-lg bg-white shadow">
         <form @submit.prevent="submit">
           <div class="px-8 py-6">
@@ -82,10 +82,10 @@ const submit = () => {
       </div>
 
       <!-- DEMO CREDENTIALS -->
-      <div class="mt-4 text-center text-sm text-gray-600">
+      <div class="mt-4 text-center text-sm text-gray-200">
         <p class="font-medium">Demo Credentials:</p>
-        <p class="mt-1">Email: <code class="rounded bg-gray-100 px-2 py-1 text-xs">johndoe@example.com</code></p>
-        <p>Password: <code class="rounded bg-gray-100 px-2 py-1 text-xs">secret</code></p>
+        <p class="mt-1">Email: <code class="rounded bg-indigo-800 px-2 py-1 text-xs text-white">johndoe@example.com</code></p>
+        <p>Password: <code class="rounded bg-indigo-800 px-2 py-1 text-xs text-white">secret</code></p>
       </div>
     </div>
   </div>
