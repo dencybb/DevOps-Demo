@@ -29,39 +29,13 @@ const submit = () => {
     <div class="w-full max-w-md">
       <Head title="Login" />
       
-      <Logo class="mx-auto mb-12 block h-20 w-20 fill-white" />
-
-      <!-- INFO BANNER -->
-      <div class="mt-4 mb-8 rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4 shadow-sm">
-        <div class="flex">
-          <div class="flex-shrink-0">
-            <svg class="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-            </svg>
-          </div>
-          <div class="ml-3">
-            <p class="text-sm font-semibold text-blue-800">
-              🚀 DevOps Demo Project
-            </p>
-            <p class="mt-1 text-xs text-blue-700">
-              Production-ready Laravel CRM with Docker, CI/CD & AWS deployment.
-            </p>
-            <p class="mt-2 text-xs text-blue-600">
-              Built by <strong>Denis Basic</strong> as a DevOps portfolio demonstration.
-              <a 
-                href="https://github.com/dencybb/DevOps-Demo" 
-                target="_blank"
-                class="ml-1 font-medium underline hover:text-blue-800"
-              >
-                View on GitHub →
-              </a>
-            </p>
-          </div>
-        </div>
+      <!-- LOGO -->
+      <div class="mb-16 text-center">
+        <Logo class="mx-auto block h-32 w-32 fill-white drop-shadow-lg" />
       </div>
 
-      <!-- LOGIN FORMA -->
-      <div class="overflow-hidden rounded-lg bg-white shadow">
+      <!-- LOGIN -->
+      <div class="overflow-hidden rounded-lg bg-white shadow-xl">
         <form @submit.prevent="submit">
           <div class="px-8 py-6">
             <h1 class="text-center text-3xl font-bold">Welcome Back!</h1>
@@ -81,11 +55,40 @@ const submit = () => {
         </form>
       </div>
 
+      <!-- INFO BANNER -->
+      <div class="mt-8 rounded-lg border-l-4 border-blue-400 bg-indigo-800 bg-opacity-50 p-4 shadow-sm backdrop-blur-sm">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-blue-300" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-semibold text-white">
+              🚀 Production-Ready CRM
+            </p>
+            <p class="mt-1 text-xs text-gray-200">
+              Docker • CI/CD • AWS • SSL
+            </p>
+            <p class="mt-2 text-xs text-gray-300">
+              Built by <strong class="text-white">Denis Basic</strong> • 
+              <a 
+                href="https://github.com/dencybb/DevOps-Demo" 
+                target="_blank"
+                class="ml-1 font-medium text-blue-300 underline hover:text-blue-200"
+              >
+                GitHub →
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+
       <!-- DEMO CREDENTIALS -->
-      <div class="mt-4 text-center text-sm text-gray-200">
-        <p class="font-medium">Demo Credentials:</p>
-        <p class="mt-1">Email: <code class="rounded bg-indigo-800 px-2 py-1 text-xs text-white">johndoe@example.com</code></p>
-        <p>Password: <code class="rounded bg-indigo-800 px-2 py-1 text-xs text-white">secret</code></p>
+      <div class="mt-6 text-center text-sm text-gray-300">
+        <p class="font-medium text-white">Demo Credentials:</p>
+        <p class="mt-2">Email: <code class="rounded bg-indigo-800 px-2 py-1 text-xs text-blue-200">johndoe@example.com</code></p>
+        <p class="mt-1">Password: <code class="rounded bg-indigo-800 px-2 py-1 text-xs text-blue-200">secret</code></p>
       </div>
     </div>
   </div>
