@@ -29,7 +29,7 @@ const submit = () => {
     <div class="w-full max-w-md">
       <Head title="Login" />
       
-      <Logo class="mx-auto mb-8 block h-16 w-16 fill-white" />
+      <Logo class="mx-auto mb-8 block h-24 w-24 fill-white" />
 
       <!-- INFO BANNER -->
       <div class="mb-6 rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4 shadow-sm">
