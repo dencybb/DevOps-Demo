@@ -229,6 +229,7 @@ docker compose exec app php artisan config:clear
 docker compose restart app
 ```
 
+
 **Permission errors**
 ```bash
 docker compose exec app chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
@@ -263,6 +264,16 @@ docker compose restart frontend
 - ✅ Custom domain with HTTPS
 
 ---
+
+## 🔧 Challenges & Solutions
+
+| Problem | Solution |
+|---|---|
+| Vite hot file blocking production assets | Remove `public/hot` on every deploy |
+| Git pull failing due to permission conflicts | `chown` before fetch + `git reset --hard` instead of pull |
+| Browser caching old JS/CSS | Vite content-hashed filenames force fresh downloads |
+| Storage permission denied after deploy | `chown www-data` on storage after container rebuild |
+| Frontend not updating after deploy | Explicit `npm run build` in deploy script instead of relying on dev server |
 
 ## 👤 Author
 
