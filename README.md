@@ -46,28 +46,28 @@ Production-ready Laravel CRM demonstrating multi-container Docker orchestration,
 │                                             │
 │   Internet → Nginx (Host) → SSL Termination │
 │                   │                         │
-│         ┌─────────▼──────────┐             │
-│         │   Docker Network   │             │
-│         │                    │             │
-│         │  ┌──────────────┐  │             │
-│         │  │  nginx:alpine │  │ Port 8000  │
-│         │  │  (container)  │  │             │
-│         │  └──────┬───────┘  │             │
-│         │         │          │             │
-│         │  ┌──────▼───────┐  │             │
-│         │  │  php:8.2-fpm  │  │             │
-│         │  │   (Laravel)   │  │             │
-│         │  └──────┬───────┘  │             │
-│         │         │          │             │
-│         │  ┌──────▼───────┐  │             │
-│         │  │  mysql:8.0    │  │             │
-│         │  └──────────────┘  │             │
-│         │                    │             │
-│         │  ┌──────────────┐  │             │
-│         │  │  node:22      │  │ Port 5173  │
-│         │  │  (Vite dev)   │  │             │
-│         │  └──────────────┘  │             │
-│         └────────────────────┘             │
+│         ┌─────────▼──────────┐              │
+│         │   Docker Network   │              │
+│         │                    │              │ 
+│         │  ┌──────────────┐  │              │
+│         │  │  nginx:alpine│  │ Port 8000    │
+│         │  │  (container) │  │              │
+│         │  └──────┬───────┘  │              │
+│         │         │          │              │
+│         │  ┌──────▼───────┐  │              │
+│         │  │  php:8.2-fpm │  │              │
+│         │  │   (Laravel)  │  │              │
+│         │  └──────┬───────┘  │              │
+│         │         │          │              │
+│         │  ┌──────▼───────┐  │              │
+│         │  │  mysql:8.0   │  │              │
+│         │  └──────────────┘  │              │
+│         │                    │              │
+│         │  ┌──────────────┐  │              │
+│         │  │  node:22     │  │ Port 5173    │
+│         │  │  (Vite dev)  │  │              │
+│         │  └──────────────┘  │              │
+│         └────────────────────┘              │
 └─────────────────────────────────────────────┘
 ```
 
@@ -92,7 +92,7 @@ Push to main
      │
      ▼
 ┌─────────────────────────────────┐
-│  JOB 1: Test (~2-3 min)        │
+│  JOB 1: Test (~2-3 min)         │
 │  ├── composer install           │
 │  ├── npm install + build        │
 │  ├── php artisan migrate        │
@@ -101,7 +101,7 @@ Push to main
                  │ only if tests pass
                  ▼
 ┌─────────────────────────────────┐
-│  JOB 2: Deploy (~1-2 min)      │
+│  JOB 2: Deploy (~1-2 min)       │
 │  ├── SSH into EC2               │
 │  ├── git pull origin main       │
 │  ├── docker compose build app   │
