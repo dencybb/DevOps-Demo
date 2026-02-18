@@ -57,6 +57,7 @@ jobs:
             rm -rf public/build
             docker compose build app
             docker compose up -d --no-deps app
+            docker compose exec -T app chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
             docker compose exec -T frontend npm run build
             rm -f public/hot
             docker compose exec -T app php artisan config:clear
@@ -67,5 +68,5 @@ jobs:
             docker compose exec -T app php artisan route:cache
             docker compose exec -T app php artisan view:cache
             docker compose restart nginx
-            echo "Deployed successfully!"
+            echo "✅ Deployed successfully!"
             curl --fail https://denisbasic.me/up || echo "⚠️ Health check failed!"
