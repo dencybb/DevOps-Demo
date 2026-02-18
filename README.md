@@ -127,7 +127,6 @@ Push to main
 - Git
 
 ### Setup
-
 ```bash
 # 1. Clone the repository
 git clone https://github.com/dencybb/DevOps-Demo.git
@@ -139,17 +138,19 @@ cp .env.example .env
 # 3. Start all containers
 docker compose up -d
 
-# 4. Install PHP dependencies
+# 4. Wait for MySQL to initialize
+sleep 15
+
+# 5. Install dependencies and setup Laravel
 docker compose exec app composer install
-
-# 5. Generate application key
 docker compose exec app php artisan key:generate
-
-# 6. Run migrations and seed database
 docker compose exec app php artisan migrate:fresh --seed
+
+# 6. Build frontend assets
+docker compose exec frontend npm run build
 ```
 
-**Access:** http://localhost:8000
+**Access:** http://localhost:8000  
 **Login:** johndoe@example.com / secret
 
 ---
