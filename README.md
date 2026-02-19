@@ -123,7 +123,7 @@ Push to main
 ## 🚀 Local Development
 
 ### Prerequisites
-- Docker + Docker Compose
+- Docker Desktop + Docker Compose
 - Git
 
 ### Setup
@@ -135,19 +135,29 @@ cd DevOps-Demo
 # 2. Configure environment
 cp .env.example .env
 
+# Update .env for local Docker setup (required!)
+sed -i 's/DB_CONNECTION=.*/DB_CONNECTION=mysql/' .env
+sed -i 's/DB_HOST=.*/DB_HOST=db/' .env
+sed -i 's/DB_PORT=.*/DB_PORT=3306/' .env
+sed -i 's/DB_DATABASE=.*/DB_DATABASE=pingcrm/' .env
+sed -i 's/DB_USERNAME=.*/DB_USERNAME=laravel/' .env
+sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=password/' .env
+sed -i 's|APP_URL=.*|APP_URL=http://localhost:8000|' .env
+
 # 3. Start all containers
 docker compose up -d
 
 # 4. Wait for MySQL to initialize
-sleep 15
+sleep 30
 
 # 5. Install dependencies and setup Laravel
 docker compose exec app composer install
 docker compose exec app php artisan key:generate
 docker compose exec app php artisan migrate:fresh --seed
 
-# 6. Build frontend assets
-docker compose exec frontend npm run build
+# 6. Fix storage permissions
+docker compose exec app chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+docker compose exec app chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 ```
 
 **Access:** http://localhost:8000  
