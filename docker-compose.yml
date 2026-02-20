@@ -14,7 +14,8 @@ services:
     networks:
       - devops-network
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   # Nginx Web Server
   nginx:
@@ -47,6 +48,12 @@ services:
       - dbdata:/var/lib/mysql
     networks:
       - devops-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   # Node.js + Vite Frontend
   frontend:
