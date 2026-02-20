@@ -65,7 +65,7 @@ const submit = () => {
           </div>
           <div class="ml-3">
             <p class="text-sm font-semibold text-white">
-              🚀 Production-Ready CRM
+              ❗ Production-Ready CRM
             </p>
             <p class="mt-1 text-xs text-gray-200">
               Docker • CI/CD • AWS • SSL
